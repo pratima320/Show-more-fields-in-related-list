@@ -1,0 +1,13 @@
+({
+	init : function(component, event, helper) {
+        component.set('v.columns',[
+            {label: 'Exp Name', fieldName: 'Name', type: 'text'},
+            {label: 'Adjustments Total', fieldName: 'Dm_AR_AdjustmentAbs_Total__c', type: 'currency'},
+            {label: 'CreditMemeo Total', fieldName: 'Dm_AR_Credit_Memo_Total__c', type: 'currency'},
+            {label: 'AR Risk Score', fieldName: 'Dm_AR_Risk_Score__c', type: 'number'},
+            {label: 'Date', fieldName: 'Evaluation_Date__c', type: 'date'}
+        ]);
+        helper.getData(component);
+		
+	}
+})
