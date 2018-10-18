@@ -1,0 +1,13 @@
+public class ExposureRecords {
+    
+    @AuraEnabled
+    public static List<Exposure__c> dmExposures(Id hierId){
+        
+        return [SELECT Id,Name, Evaluation_Date__c, RecordType.DeveloperName, Dm_AR_AdjustmentAbs_Total__c , Dm_AR_Credit_Memo_Total__c , Dm_AR_Risk_Score__c, 
+               Dm_AR_Bucket_1__c , Dm_AR_Bucket_2__c , Dm_AR_Bucket_3__c ,Dm_AR_Bucket_4__c ,Dm_AP_OOP_Accounts_Total__c ,
+               Dm_AP_Risk_Score__c ,Dm_AP_OOP_Invoices_Total__c  FROM Exposure__c WHERE Hierarchy_Node__c =:hierId
+                AND RecordType.DeveloperName LIKE 'DM_Financial_Healthcheck'
+              ORDER BY Evaluation_Date__c DESC LIMIT 12];
+    }
+
+}
