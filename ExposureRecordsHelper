@@ -1,0 +1,18 @@
+({
+	getData : function(component) {
+        var action = component.get("c.dmExposures");
+        action.setParams({
+            "hierId" : component.get("v.recordId")
+        });
+        action.setCallback(this, function(actionResult){
+            if(actionResult.getState() === "SUCCESS"){
+                var exposures = actionResult.getReturnValue();
+                component.set("v.data", exposures);
+            }else if(actionResult.getState() === "ERROR"){
+                console.log("Error occurred");
+            }
+        });
+        $A.enqueueAction(action);
+		
+	}
+})
